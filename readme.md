@@ -1,16 +1,111 @@
-# 代码运行顺序
-1. **提取阶段 (extract)**: 首先运行 `extract.py`，从 JSON 文件中提取参考文献。该阶段会读取指定文件夹中的 JSON 文件，并提取出参考文献的相关信息，生成结构化的参考文献文件。
-2. **结构化阶段 (structured)**: 接下来运行 `chapterContent.py`，根据提取的参考文献生成章节内容。此阶段会将参考文献转化为章节内容，并保存为文本文件，便于后续处理。
-3. **标题阶段 (title)**: 然后运行 `title&abstract.py`，生成章节标题和摘要。该阶段会根据章节内容自动生成相应的标题和摘要，确保文档的逻辑性和可读性。
-4. **内容阶段 (content)**: 接着运行 `content.py`，生成章节的详细内容。此阶段会根据标题和摘要生成详细的章节内容，丰富文档的内容。
-5. **结论阶段 (conclusion)**: 最后运行 `Conclusion.py`，生成总结部分。该阶段会根据章节内容和主题生成总结，帮助读者快速理解文档的核心观点。
-6. **整合阶段 (integrator)**: 最后运行 `integrator.py`，将所有部分整合在一起，形成完整的文档。此阶段会将提取的参考文献、章节内容、标题、摘要和结论整合为一个完整的文档格式，如 XML 或其他所需格式。
+# MASS-Survey
 
-# 使用说明
-请确保在运行代码之前，已准备好相应的 JSON 文件，并将其放置在指定的文件夹中。运行顺序应按照上述步骤进行，以确保生成的文档完整且结构合理。每个阶段的输出文件将作为下一个阶段的输入文件，因此请确保每个阶段都成功运行并生成所需的文件。
+MASS-Survey (Multi-Agent Scientific Survey) is an automated literature survey generation tool that leverages Large Language Models (LLMs) and Multi-Agent Systems (MAS) to produce comprehensive scientific literature surveys.
 
-# 注意事项
-- 确保 Python 环境中已安装所需的库，`openai` 。
-- 在运行代码之前，请检查 API 密钥和基础 URL 是否正确配置。
-- 如果在运行过程中遇到文件未找到的错误，请检查文件路径和文件名是否正确。
+[![Paper](https://img.shields.io/badge/Paper-PDF-red)](https://link.springer.com/chapter/10.1007/978-981-97-9443-0_14)
+[![Conference](https://img.shields.io/badge/Conference-NLPCC%202024-blue)](https://link.springer.com/book/10.1007/978-981-97-9443-0)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
+## Overview
+
+This repository contains the implementation of our NLPCC 2024 paper: "Generation of Scientific Literature Surveys Based on Large Language Models (LLM) and Multi-Agent Systems (MAS)". The system utilizes a pipeline approach to automatically generate literature surveys through multiple processing stages.
+
+## Pipeline Architecture
+
+The system operates through six sequential stages:
+
+1. **Extract Stage** (`extract.py`)
+   - Processes JSON input files
+   - Extracts and structures reference information
+   - Generates structured bibliography data
+
+2. **Structure Stage** (`chapterContent.py`)
+   - Transforms bibliography data into structured chapter content
+   - Implements initial content organization
+   - Prepares framework for survey generation
+
+3. **Title Stage** (`title&abstract.py`)
+   - Generates chapter titles and abstracts
+   - Ensures logical document structure
+   - Creates content overview
+
+4. **Content Stage** (`content.py`)
+   - Produces detailed chapter content
+   - Expands on structured framework
+   - Implements in-depth analysis
+
+5. **Conclusion Stage** (`Conclusion.py`)
+   - Synthesizes overall findings
+   - Generates comprehensive conclusions
+   - Summarizes key contributions
+
+6. **Integration Stage** (`integrator.py`)
+   - Merges all components
+   - Ensures document coherence
+   - Produces final survey output
+
+## Installation
+
+```bash
+git clone https://github.com/may3rr/MASS-Survey.git
+cd MASS-Survey
+pip install -r requirements.txt
+```
+
+## Usage
+
+1. Configure your API settings in `config.py`:
+```python
+OPENAI_API_KEY = 'your-api-key'
+API_BASE = 'your-api-base-url'
+```
+
+2. Prepare your input JSON files in the designated directory.
+
+3. Run the pipeline sequentially:
+```bash
+python extract.py
+python chapterContent.py
+python "title&abstract.py"
+python content.py
+python Conclusion.py
+python integrator.py
+```
+
+## Requirements
+
+- Python 3.8+
+- OpenAI API key
+- Required Python packages:
+  - openai
+
+
+
+## Citation
+If you use this code for your research, please cite our paper:
+
+```bibtex
+@InProceedings{10.1007/978-981-97-9443-0_14,
+author="Qi, Ruihua
+and Li, Weilong
+and Lyu, Haobo",
+editor="Wong, Derek F.
+and Wei, Zhongyu
+and Yang, Muyun",
+title="Generation of Scientific Literature Surveys Based on Large Language Models (LLM) and Multi-Agent Systems (MAS)",
+booktitle="Natural Language Processing and Chinese Computing",
+year="2025",
+publisher="Springer Nature Singapore",
+address="Singapore",
+pages="169--180",
+abstract="With the rapid increase in the number and speed of scientific publications, researchers face significant time pressure when conducting literature reviews. This paper presents an automatic literature review generation method leveraging large language models (LLMs) and multi-agent systems (MAS). By designing multiple agent roles, including reference parsing, analysis, generation, and integration agents-this method fully utilizes the natural language processing capabilities of LLMs and the collaborative strengths of MAS to produce high-quality literature reviews. In the NLPCC2024 evaluation task, our method excelled in multiple automatic evaluation metrics (such as SoftHeadingRecall and ROUGE) and manual evaluations, showcasing its great potential for practical applications.",
+isbn="978-981-97-9443-0"
+}
+```
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+For any questions or issues, please contact:
+- Email: lvhaobo@foxmail.com
+- GitHub: [@may3rr](https://github.com/may3rr)
