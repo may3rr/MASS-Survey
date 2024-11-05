@@ -10,34 +10,7 @@
 请确保在运行代码之前，已准备好相应的 JSON 文件，并将其放置在指定的文件夹中。运行顺序应按照上述步骤进行，以确保生成的文档完整且结构合理。每个阶段的输出文件将作为下一个阶段的输入文件，因此请确保每个阶段都成功运行并生成所需的文件。
 
 # 注意事项
-- 确保 Python 环境中已安装所需的库，如 `openai` 和 `os`。
+- 确保 Python 环境中已安装所需的库，`openai` 。
 - 在运行代码之前，请检查 API 密钥和基础 URL 是否正确配置。
 - 如果在运行过程中遇到文件未找到的错误，请检查文件路径和文件名是否正确。
 
-# 示例
-以下是一个示例文件夹结构，展示如何组织输入和输出文件：
-```
-project/
-│
-├── input/
-│ ├── train2001.02611.content.ref.json
-│ ├── train2002.12691.content.ref.json
-│ └── ...
-│
-├── output/
-│ ├── structured_references/
-│ ├── chapter_contents/
-│ ├── titles_and_abstracts/
-│ ├── conclusions/
-│ └── final_document.xml
-│
-└── scripts/
-├── extract.py
-├── chapterContent.py
-├── title&abstract.py
-├── content.py
-├── Conclusion.py
-└── integrator.py
-
-
-```
